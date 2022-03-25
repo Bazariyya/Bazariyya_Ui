@@ -9469,7 +9469,7 @@
     "strip-ansi" "5.2.0"
     "text-table" "0.2.0"
 
-"react-dom@^0.14 || ^15.0.0 || ^ 16.0.0", "react-dom@^15.5.4 || ^16.0.0 || ^17.0.0", "react-dom@^16.0.0 || ^17.0.0", "react-dom@^16.2.0 || ^17.0.0", "react-dom@^16.8.0 || ^17.0.0", "react-dom@^17.0.1", "react-dom@>= 15", "react-dom@>= 16.8.0", "react-dom@>=15.0.0", "react-dom@>=16.0.0", "react-dom@>=16.3.0", "react-dom@>=16.6.0", "react-dom@>=16.8.0", "react-dom@~0.14.8 || ^15.0.0 || ^16.0.0":
+"react-dom@^0.14 || ^15.0.0 || ^ 16.0.0", "react-dom@^15.5.4 || ^16.0.0 || ^17.0.0", "react-dom@^16.0.0 || ^17.0.0", "react-dom@^16.2.0 || ^17.0.0", "react-dom@^16.3.0", "react-dom@^16.8.0 || ^17.0.0", "react-dom@^17.0.1", "react-dom@>= 15", "react-dom@>= 16.8.0", "react-dom@>=15.0.0", "react-dom@>=16.0.0", "react-dom@>=16.3.0", "react-dom@>=16.3.x", "react-dom@>=16.6.0", "react-dom@>=16.8.0", "react-dom@~0.14.8 || ^15.0.0 || ^16.0.0":
   "integrity" "sha512-s4h96KtLDUQlsENhMn1ar8t2bEa+q/YAtj8pPPdIjPDGBDIVNsrD9aXNWqspUe6AzKCIG0C1HZZLqLV7qpOBGA=="
   "resolved" "https://registry.npmjs.org/react-dom/-/react-dom-17.0.2.tgz"
   "version" "17.0.2"
@@ -9508,6 +9508,11 @@
   "resolved" "https://registry.npmjs.org/react-fast-compare/-/react-fast-compare-2.0.4.tgz"
   "version" "2.0.4"
 
+"react-flip-move@^3.0.4":
+  "integrity" "sha512-HyUVv9g3t/BS7Yz9HgrtYSWyRNdR2F81nkj+C5iRY675AwlqCLB5JU9mnZWg0cdVz7IM4iquoyZx70vzZv3Z8Q=="
+  "resolved" "https://registry.npmjs.org/react-flip-move/-/react-flip-move-3.0.4.tgz"
+  "version" "3.0.4"
+
 "react-fullpage@^0.1.19":
   "integrity" "sha512-MkYOv8WOOtvrhbdRNqrbjSsOjdlFSz4qhAt/HXNjfhR9QHqmvrjQBs5bf/UaEG7idOSkfIySWwfRvMeCXBCtLQ=="
   "resolved" "https://registry.npmjs.org/react-fullpage/-/react-fullpage-0.1.19.tgz"
@@ -9528,6 +9533,14 @@
   "version" "2.4.0"
   dependencies:
     "object-assign" "^4.1.1"
+
+"react-images-upload@^1.2.8":
+  "integrity" "sha512-d5mhAE0BfkLTlG5MLvKVw+q76LL8r5easgWW0TTBvXD8n6HXeLMZLwCuPiOibY1a3NRMXI4AnM1r34dqLOBjng=="
+  "resolved" "https://registry.npmjs.org/react-images-upload/-/react-images-upload-1.2.8.tgz"
+  "version" "1.2.8"
+  dependencies:
+    "react" "^16.12.0"
+    "react-flip-move" "^3.0.4"
 
 "react-is@^16.13.1", "react-is@^16.3.2", "react-is@^16.6.0", "react-is@^16.7.0", "react-is@^16.8.4", "react-is@>= 16.8.0":
   "integrity" "sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ=="
@@ -9783,7 +9796,7 @@
   dependencies:
     "prop-types" "^15.7.2"
 
-"react@*", "react@^0.14 || ^15.0.0 || ^ 16.0.0", "react@^0.14.0 || ^15.0.0 || ^16.0.0 || ^17.0.0", "react@^15.5.4 || ^16.0.0 || ^17.0.0", "react@^16.0.0 || ^17.0.0", "react@^16.2.0 || ^17.0.0", "react@^16.8.0 || ^17.0.0", "react@^16.8.3 || ^17", "react@^17.0.1", "react@>= 15", "react@>= 16.3.0", "react@>= 16.8.0", "react@>=0.14.0", "react@>=15", "react@>=15.0.0", "react@>=16.0.0", "react@>=16.3.0", "react@>=16.3.0 || ^16.3.0", "react@>=16.3.2", "react@>=16.6.0", "react@>=16.8.0", "react@~0.14.8 || ^15.0.0 || ^16.0.0", "react@17.0.2":
+"react@*", "react@^0.14 || ^15.0.0 || ^ 16.0.0", "react@^0.14.0 || ^15.0.0 || ^16.0.0 || ^17.0.0", "react@^15.5.4 || ^16.0.0 || ^17.0.0", "react@^16.0.0 || ^17.0.0", "react@^16.2.0 || ^17.0.0", "react@^16.8.0 || ^17.0.0", "react@^16.8.3 || ^17", "react@^17.0.1", "react@>= 15", "react@>= 16.3.0", "react@>= 16.8.0", "react@>=0.14.0", "react@>=15", "react@>=15.0.0", "react@>=16.0.0", "react@>=16.3.0", "react@>=16.3.0 || ^16.3.0", "react@>=16.3.2", "react@>=16.3.x", "react@>=16.6.0", "react@>=16.8.0", "react@~0.14.8 || ^15.0.0 || ^16.0.0", "react@17.0.2":
   "integrity" "sha512-gnhPt75i/dq/z3/6q/0asP78D0u592D5L1pd7M8P+dck6Fu/jJeL6iVVK23fptSUZj8Vjf++7wXA8UNclGQcbA=="
   "resolved" "https://registry.npmjs.org/react/-/react-17.0.2.tgz"
   "version" "17.0.2"
@@ -9800,6 +9813,15 @@
     "loose-envify" "^1.1.0"
     "object-assign" "^4.1.1"
     "prop-types" "^15.6.0"
+
+"react@^16.12.0":
+  "integrity" "sha512-0X2CImDkJGApiAlcf0ODKIneSwBPhqJawOa5wCtKbu7ZECrmS26NvtSILynQ66cgkT/RJ4LidJOc3bUESwmU8g=="
+  "resolved" "https://registry.npmjs.org/react/-/react-16.14.0.tgz"
+  "version" "16.14.0"
+  dependencies:
+    "loose-envify" "^1.1.0"
+    "object-assign" "^4.1.1"
+    "prop-types" "^15.6.2"
 
 "react@^16.14.0", "react@^16.9.0":
   "integrity" "sha512-0X2CImDkJGApiAlcf0ODKIneSwBPhqJawOa5wCtKbu7ZECrmS26NvtSILynQ66cgkT/RJ4LidJOc3bUESwmU8g=="

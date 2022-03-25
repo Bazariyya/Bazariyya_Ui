@@ -4,8 +4,12 @@ import LayoutOne from "../../layouts/LayoutOne";
 import ProductGrid from "../../wrappers/product/ProductGrid";
 import SectionTitle from "../../components/section-title/SectionTitle";
 import Categories from "../../components/categories";
+import { useHistory } from "react-router-dom";
+import { connect } from "react-redux";
 
-const HomeFashion = () => {
+const HomeFashion = ({categories}) => {
+  const { push } = useHistory();
+
   return (
     <Fragment>
       <MetaTags>
@@ -21,13 +25,26 @@ const HomeFashion = () => {
       >
         {/* tab product */}
         {/* <TabProduct spaceBottomClass="pb-60" category="fashion" /> */}
-        <div className="container">
+        <div className="container mt-3">
+          <button
+            className="text-center"
+            style={{
+              background: "#c65431",
+              border: "none",
+              borderRadius: "8px",
+              padding: "10px 30px",
+              color: "#fff",
+            }}
+            onClick={() => push("/add-product")}
+          >
+            Hayvanlarınızı Satın
+          </button>
           <SectionTitle
             titleText="Kategoriler"
             positionClass="text-center"
             spaceClass="mt-50"
           />
-          <Categories />
+          <Categories categories={categories} />
 
           <SectionTitle
             titleText="En Son Eklenenler"
@@ -43,4 +60,10 @@ const HomeFashion = () => {
   );
 };
 
-export default HomeFashion;
+const mapStateToProps = (state) => {
+  return {
+    categories: state.categories,
+  };
+};
+
+export default connect(mapStateToProps)(HomeFashion);

@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import PropTypes from "prop-types";
 import React, { Fragment, useState, useContext, useEffect } from "react";
 import MetaTags from "react-meta-tags";
@@ -10,10 +11,18 @@ import ShopSidebar from "../../wrappers/product/ShopSidebar";
 import ShopTopbar from "../../wrappers/product/ShopTopbar";
 import ShopProducts from "../../wrappers/product/ShopProducts";
 import { LoadingContext } from "../../context/Loading";
-import { getAllCategories, getProducts } from "../../services/product";
+import { getProducts } from "../../services/product";
 import { useFetch } from "../../hooks/use-fetch";
+import {
+  useHistory,
+  useLocation,
+} from "react-router-dom/cjs/react-router-dom.min";
 
-const ShopGridStandard = ({ location }) => {
+const ShopGridStandard = ({ location, categories }) => {
+  const { search } = useLocation();
+  const query = new URLSearchParams(search);
+  const catID = query.get("catId");
+  const userID = query.get("userId");
   const [layout, setLayout] = useState("grid three-column");
   const [, setOffset] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
@@ -21,11 +30,12 @@ const ShopGridStandard = ({ location }) => {
   const [sortedData, setSortedData] = useState([]);
   const [mergeCat, setMergeCat] = useState([]);
   const [filterData, setFilterData] = useState({
-    categoryId: 0,
+    categoryId: Number(catID),
     minPrice: 0,
     maxPrice: 0,
   });
   const { setLoading } = useContext(LoadingContext);
+  const { push } = useHistory();
 
   const pageLimit = 9;
   const [allProducts] = useFetch(
@@ -33,32 +43,23 @@ const ShopGridStandard = ({ location }) => {
       getProducts({
         pageCount: pageLimit,
         pageIndex: currentPage - 1,
-        categoryId: 0,
         ...filterData,
       }),
     {},
     {
       setLoading,
-      reloadDeps: [currentPage, filterData],
-      deps: [currentPage, filterData],
+      reloadDeps: [currentPage, filterData, catID],
+      deps: [currentPage, filterData, catID],
     }
   );
 
-  const [allSubCategories] = useFetch(
-    () =>
-      getAllCategories({
-        pageCount: 0,
-        pageIndex: 0,
-        id: 0,
-        categoryId: 0,
-        isSubCategoryes: true,
-        code: "",
-      }),
-    {},
-    {
-      setLoading,
-    }
-  );
+  useEffect(() => {
+    setFilterData({
+      ...filterData,
+      categoryId: Number(catID),
+      userId: Number(userID) ?? "",
+    });
+  }, [catID]);
 
   const { pathname } = location;
 
@@ -71,10 +72,10 @@ const ShopGridStandard = ({ location }) => {
   };
 
   useEffect(() => {
-    if (allSubCategories?.value) {
-      setMergeCat([...allSubCategories?.value]);
+    if (categories && categories.sub && categories.sub.length > 0) {
+      setMergeCat([...categories.sub]);
     }
-  }, [allSubCategories]);
+  }, [categories, catID]);
 
   useEffect(() => {
     if (sortType) {
@@ -92,6 +93,11 @@ const ShopGridStandard = ({ location }) => {
 
   const getFilterParams = (data) => {
     setFilterData(data);
+    if (data.categoryId === 0) {
+      push("/product-list");
+    } else {
+      push(`/product-list?catId=${data.categoryId}`);
+    }
   };
   return (
     <Fragment>
@@ -139,7 +145,7 @@ const ShopGridStandard = ({ location }) => {
                 {/* shop product pagination */}
                 <div className="pro-pagination-style text-center mt-30">
                   <Paginator
-                    totalRecords={45}
+                    totalRecords={allProducts?.itemCount}
                     pageLimit={pageLimit}
                     pageNeighbours={2}
                     setOffset={setOffset}
@@ -165,7 +171,7 @@ ShopGridStandard.propTypes = {
 };
 
 const mapStateToProps = (state) => {
-  return {};
+  return { categories: state.categories };
 };
 
 export default connect(mapStateToProps)(ShopGridStandard);

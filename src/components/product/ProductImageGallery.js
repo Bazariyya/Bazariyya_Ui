@@ -26,7 +26,11 @@ const ProductImageGallery = ({ product }) => {
     spaceBetween: 10,
     loopedSlides: 4,
     loop: true,
-    effect: "fade"
+    effect: "fade",
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
   };
 
   const thumbnailSwiperParams = {
@@ -37,10 +41,11 @@ const ProductImageGallery = ({ product }) => {
     touchRatio: 0.2,
     freeMode: true,
     loop: true,
+    watchSlidesProgress: true,
     slideToClickedSlide: true,
     navigation: {
       nextEl: ".swiper-button-next",
-      prevEl: ".swiper-button-prev"
+      prevEl: ".swiper-button-prev",
     },
     renderPrevButton: () => (
       <button className="swiper-button-prev ht-swiper-button-nav">
@@ -51,7 +56,7 @@ const ProductImageGallery = ({ product }) => {
       <button className="swiper-button-next ht-swiper-button-nav">
         <i className="pe-7s-angle-right" />
       </button>
-    )
+    ),
   };
 
   return (
@@ -59,24 +64,17 @@ const ProductImageGallery = ({ product }) => {
       <div className="product-large-image-wrapper">
         <LightgalleryProvider>
           <Swiper {...gallerySwiperParams}>
-            {product.image &&
-              product.image.map((single, key) => {
+            {product?.productImages &&
+              product.productImages?.map((single, key) => {
                 return (
                   <div key={key}>
-                    <LightgalleryItem
-                      group="any"
-                      src={process.env.PUBLIC_URL + single}
-                    >
+                    <LightgalleryItem group="any" src={single.url}>
                       <button>
                         <i className="pe-7s-expand1"></i>
                       </button>
                     </LightgalleryItem>
                     <div className="single-image">
-                      <img
-                        src={process.env.PUBLIC_URL + single}
-                        className="img-fluid"
-                        alt=""
-                      />
+                      <img src={single.url} className="img-fluid" alt="" />
                     </div>
                   </div>
                 );
@@ -86,16 +84,12 @@ const ProductImageGallery = ({ product }) => {
       </div>
       <div className="product-small-image-wrapper mt-15">
         <Swiper {...thumbnailSwiperParams}>
-          {product.image &&
-            product.image.map((single, key) => {
+          {product?.productImages &&
+            product.productImages?.map((single, key) => {
               return (
                 <div key={key}>
                   <div className="single-image">
-                    <img
-                      src={process.env.PUBLIC_URL + single}
-                      className="img-fluid"
-                      alt=""
-                    />
+                    <img src={single.url} className="img-fluid" alt="" />
                   </div>
                 </div>
               );
@@ -107,7 +101,7 @@ const ProductImageGallery = ({ product }) => {
 };
 
 ProductImageGallery.propTypes = {
-  product: PropTypes.object
+  product: PropTypes.object,
 };
 
 export default ProductImageGallery;

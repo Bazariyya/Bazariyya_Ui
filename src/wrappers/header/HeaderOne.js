@@ -34,6 +34,7 @@ const HeaderOne = ({
       className={`header-area clearfix ${headerBgClass ? headerBgClass : ""} ${
         headerPositionClass ? headerPositionClass : ""
       }`}
+      style={{borderBottom: "1px solid #e6e6e6"}}
     >
       <div
         className={`${headerPaddingClass ? headerPaddingClass : ""} ${

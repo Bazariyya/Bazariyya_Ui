@@ -26,16 +26,21 @@ export function UserContextProvider({ children }) {
     if (localStorage.getItem("token")) {
       refreshToken({ token: JSON.parse(localStorage.getItem("token")) }).then(
         (res) => {
-          const { email } = res.value;
-          getCustomer({ email })
-            .then((response) => {
-              setUser(response.value);
-            })
-            .catch((error) => {
-              removeToken("token");
-              setUser(false);
-              throw error;
-            });
+          if (res.isSuccess === false) {
+            removeToken("token");
+            setUser(false);
+          } else {
+            const { email } = res.value;
+            getCustomer({ email })
+              .then((response) => {
+                setUser(response.value);
+              })
+              .catch((error) => {
+                removeToken("token");
+                setUser(false);
+                throw error;
+              });
+          }
         }
       );
     } else {

@@ -598,6 +598,10 @@
       }
     }
   }
+  .product-detay-user{
+    border: 1px solid black;
+    border-radius: 10px;
+  }
   .pro-details-size-color {
     display: flex;
     @media #{$xs-layout} {

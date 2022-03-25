@@ -23,10 +23,10 @@ const LoginRegister = ({ location }) => {
     initialValues: {
       name: "",
       surname: "",
-      countryCode: "",
       email: "",
       password: "",
       isActive: true,
+      phone: "",
     },
     onSubmit: async (data) => {
       showLoading();
@@ -43,14 +43,20 @@ const LoginRegister = ({ location }) => {
       }
 
       if (res.isSuccess) {
-        hideLoading();
         addToast("Kayıt Başarılı", {
           appearance: "success",
           autoDismiss: true,
           autoDismissTimeout: 3000,
         });
         formik.resetForm();
+      } else {
+        addToast(res.message, {
+          appearance: "error",
+          autoDismiss: true,
+          autoDismissTimeout: 3000,
+        });
       }
+      hideLoading();
     },
   });
 
@@ -119,7 +125,7 @@ const LoginRegister = ({ location }) => {
                     <Nav variant="pills" className="login-register-tab-list">
                       <Nav.Item>
                         <Nav.Link eventKey="login">
-                          <h4>Girş Yap</h4>
+                          <h4>Giriş Yap</h4>
                         </Nav.Link>
                       </Nav.Item>
                       <Nav.Item>
@@ -205,6 +211,14 @@ const LoginRegister = ({ location }) => {
                                 type="email"
                                 value={formik.values.email}
                                 onChange={formik.handleChange}
+                              />
+                              <input
+                                type="numeric"
+                                name="phone"
+                                placeholder="Telefon Numarası"
+                                value={formik.values.phone}
+                                onChange={formik.handleChange}
+                                maxLength="10"
                               />
                               <div className="button-box">
                                 <button

@@ -4,8 +4,8 @@ import { connect } from "react-redux";
 import { addToCart } from "../../redux/actions/cartActions";
 import { addToWishlist } from "../../redux/actions/wishlistActions";
 import { addToCompare } from "../../redux/actions/compareActions";
-import Rating from "./sub-components/ProductRating";
 import priceFormat from "../../helpers/priceFormatter";
+import Table from "../table";
 
 const ProductDescriptionInfo = ({
   product,
@@ -21,24 +21,34 @@ const ProductDescriptionInfo = ({
   addToWishlist,
   addToCompare,
 }) => {
+  const userItems = [
+    { name: "Ad", value: product?.user?.name },
+    { name: "Soyad", value: product?.user?.surname },
+    { name: "Email", value: product?.user?.email },
+    { name: "Telefon", value: product?.user?.phone },
+  ];
+
+  const addressItems = [
+    { name: "Şehir", value: product?.address?.city },
+    { name: "İlçe", value: product?.address?.district },
+    { name: "Adres", value: product?.address?.addressText },
+  ];
+
   return (
     <div className="product-details-content ml-70">
-      <h2>{product.name}</h2>
+      <h2>{product?.name}</h2>
       <div className="product-details-price">
-        <span>{priceFormat(product.price)} </span>
-      </div>
-      <div className="pro-details-rating-wrap">
-        <div className="pro-details-rating">
-          <Rating ratingValue={product.rating ?? 3} />
-        </div>
+        <span>{priceFormat(product?.price)} </span>
       </div>
       <div className="pro-details-list">
-        <p>{product.sizeDefinition}</p>
-        <p>{product.code}</p>
-        <p>{product.colorCode}</p>
-        <p>{product.division}</p>
-        <p>{product.season}</p>
-        <p>{product.styleCode}</p>
+        <p>id : {product?.id}</p>
+        <p>Aktif : {product?.isActive?.toString()}</p>
+      </div>
+      <div className="product-detay-user">
+        <Table data={userItems} />
+      </div>
+      <div className="product-detay-user mt-4">
+        <Table data={addressItems} />
       </div>
     </div>
   );

@@ -46,19 +46,14 @@ const Product = ({ location, product }) => {
         <ProductImageDescription
           spaceTopClass="pt-100"
           spaceBottomClass="pb-100"
-          product={{...detailProduct?.value, image: [
-            "https://source.unsplash.com/600x800/?animals",
-            "https://source.unsplash.com/600x800/?object",
-            "https://source.unsplash.com/600x800/?mouse",
-            "https://source.unsplash.com/600x800/?table",
-            "https://source.unsplash.com/600x800/?fruit",
-          ]}}
+          product={detailProduct?.value}
         />
 
         {/* product description tab */}
         <ProductDescriptionTab
           spaceBottomClass="pb-90"
           productFullDesc={product.fullDescription}
+          productAttributes={detailProduct?.value?.productAttributes}
         />
 
         {/* related product slider */}

@@ -14,9 +14,8 @@ const ProductImageDescription = ({
   currency,
   cartItems,
   wishlistItems,
-  compareItems
+  compareItems,
 }) => {
-
   return (
     <div
       className={`shop-area ${spaceTopClass ? spaceTopClass : ""} ${
@@ -37,7 +36,7 @@ const ProductImageDescription = ({
             ) : galleryType === "fixedImage" ? (
               <ProductImageFixed product={product} />
             ) : (
-              <ProductImageGallery product={product} />
+              product && <ProductImageGallery product={product} />
             )}
           </div>
           <div className="col-lg-6 col-md-6">
@@ -62,15 +61,15 @@ ProductImageDescription.propTypes = {
   product: PropTypes.object,
   spaceBottomClass: PropTypes.string,
   spaceTopClass: PropTypes.string,
-  wishlistItems: PropTypes.array
+  wishlistItems: PropTypes.array,
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     currency: state.currencyData,
     cartItems: state.cartData,
     wishlistItems: state.wishlistData,
-    compareItems: state.compareData
+    compareItems: state.compareData,
   };
 };
 

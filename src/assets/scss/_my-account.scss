@@ -3,6 +3,9 @@
 .single-my-account {
   margin-bottom: 20px;
   border: 1px solid #ebebeb;
+  .p-error{
+    color: red;
+  }
   .panel-heading {
     padding: 0;
     & > button {
@@ -89,6 +92,15 @@
         color: #000;
         height: 40px;
         padding: 0 15px;
+      }
+
+      select {
+        font-size: 14px;
+        min-width: 143px;
+        height: 40px;
+        padding: 5px;
+        color: #606060;
+        border: 1px solid #e6e6e6;
       }
     }
     .billing-back-btn {

@@ -20,6 +20,7 @@
     "react-fullpage": "^0.1.19",
     "react-hooks-paginator": "^0.4.0",
     "react-id-swiper": "2.4.0",
+    "react-images-upload": "^1.2.8",
     "react-lightgallery": "0.6.3",
     "react-loader-spinner": "^5.1.0",
     "react-mailchimp-subscribe": "^2.1.0",

@@ -61,21 +61,13 @@ const IconGroup = ({
             </li>
             <li>
               {user?.email && (
-                <Link to={process.env.PUBLIC_URL + "/my-account"}>
-                  my account
+                <Link to={`/product-list?userId=${user.id}`}>
+                  Ürünlerim
                 </Link>
               )}
             </li>
           </ul>
         </div>
-      </div>
-      <div className="same-style cart-wrap d-block d-lg-none">
-        <Link className="icon-cart" to={process.env.PUBLIC_URL + "/cart"}>
-          <i className="pe-7s-shopbag" />
-          <span className="count-style">
-            {cartData && cartData.length ? cartData.length : 0}
-          </span>
-        </Link>
       </div>
       <div className="same-style mobile-off-canvas d-block d-lg-none">
         <button

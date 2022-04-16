@@ -3,7 +3,7 @@ import React from "react";
 
 const ShopCategories = ({ categories, getFilterParams, filterData }) => {
   return (
-    <div className="sidebar-widget">
+    <div className="sidebar-widget pl-4">
       <h4 className="pro-sidebar-title">Kategoriler </h4>
       <div className="sidebar-widget-list mt-30">
         {categories ? (

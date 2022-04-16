@@ -29,6 +29,7 @@ const ShopGridStandard = ({ location, categories }) => {
   const [sortType, setSortType] = useState(null);
   const [sortedData, setSortedData] = useState([]);
   const [mergeCat, setMergeCat] = useState([]);
+  const [showFilter, setShowFilter] = useState(false);
   const [filterData, setFilterData] = useState({
     categoryId: Number(catID),
     minPrice: 0,
@@ -98,6 +99,8 @@ const ShopGridStandard = ({ location, categories }) => {
     } else {
       push(`/product-list?catId=${data.categoryId}`);
     }
+
+    setShowFilter(false);
   };
   return (
     <Fragment>
@@ -123,16 +126,44 @@ const ShopGridStandard = ({ location, categories }) => {
         <div className="shop-area pt-95 pb-100">
           <div className="container">
             <div className="row">
-              <div className="col-lg-3 order-2 order-lg-1">
+              <div className="col-lg-3">
                 {/* shop sidebar */}
-                <ShopSidebar
-                  categories={mergeCat}
-                  sideSpaceClass="mr-30"
-                  getFilterParams={(value) => getFilterParams(value)}
-                  filterData={filterData}
-                />
+                <button
+                  className="text-center filter-btn"
+                  style={{
+                    background: "#c65431",
+                    border: "none",
+                    borderRadius: "8px",
+                    padding: "10px 30px",
+                    color: "#fff",
+                  }}
+                  onClick={() => setShowFilter(!showFilter)}
+                >
+                  Filtrele
+                </button>
+
+                <div className={`side-bar ${showFilter ? "active" : ""}`}>
+                  <button
+                    className="filter-btn "
+                    style={{
+                      position: "absolute",
+                      right: "10px",
+                      top: "10px",
+                      border: "none",
+                    }}
+                    onClick={() => setShowFilter(false)}
+                  >
+                    X
+                  </button>
+                  <ShopSidebar
+                    categories={mergeCat}
+                    sideSpaceClass="mr-30"
+                    getFilterParams={(value) => getFilterParams(value)}
+                    filterData={filterData}
+                  />
+                </div>
               </div>
-              <div className="col-lg-9 order-1 order-lg-2">
+              <div className="col-lg-9">
                 {/* shop topbar default */}
                 <ShopTopbar
                   getLayout={getLayout}

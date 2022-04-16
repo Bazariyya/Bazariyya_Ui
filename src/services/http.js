@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const customAxios = axios.create({
-  baseURL: "bazariyya.com/api",
+  baseURL: "api.bazariyya.com/api",
   headers: {},
 });
 

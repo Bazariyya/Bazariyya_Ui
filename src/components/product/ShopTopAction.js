@@ -10,16 +10,17 @@ const ShopTopAction = ({
   return (
     <div className="shop-top-bar mb-35">
       <div className="select-shoing-wrap">
-        <div className="shop-select">
-          <select onChange={(e) => getFilterSortParams(e.target.value)}>
+        <div className="shop-select mt-3">
+          <label htmlFor="sort">Sıralama:</label>
+          <select
+            id="sort"
+            onChange={(e) => getFilterSortParams(e.target.value)}
+          >
             <option value="">Seçiniz</option>
             <option value="priceHighToLow">Artan Fiyat</option>
             <option value="priceLowToHigh">Azalan Fiyat</option>
           </select>
         </div>
-        <p>
-          Showing {sortedProductCount} of {productCount} result
-        </p>
       </div>
 
       {/* <div className="shop-tab">

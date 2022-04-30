@@ -52,11 +52,11 @@ const IconGroup = ({
         <div className="account-dropdown">
           <ul>
             <li>
-              <Link to={process.env.PUBLIC_URL + "/login-register"}>Login</Link>
+              <Link to={process.env.PUBLIC_URL + "/login-register"}>Giriş Yap</Link>
             </li>
             <li>
               <Link to={process.env.PUBLIC_URL + "/login-register"}>
-                Register
+                Kayıt Ol
               </Link>
             </li>
             <li>
